@@ -11,22 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126052503) do
+ActiveRecord::Schema.define(version: 20141127035248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "learner_locations", force: true do |t|
-    t.string   "name"
+  create_table "users", force: true do |t|
+    t.string   "first_name"
     t.string   "country"
     t.string   "state"
     t.string   "city"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "last_name"
   end
 
-  add_index "learner_locations", ["city"], name: "index_learner_locations_on_city", using: :btree
-  add_index "learner_locations", ["country"], name: "index_learner_locations_on_country", using: :btree
-  add_index "learner_locations", ["state"], name: "index_learner_locations_on_state", using: :btree
+  add_index "users", ["city"], name: "index_users_on_city", using: :btree
+  add_index "users", ["country"], name: "index_users_on_country", using: :btree
+  add_index "users", ["state"], name: "index_users_on_state", using: :btree
 
 end

@@ -9,13 +9,13 @@
 require 'csv'
 # require 'openssl'
 # require 'geokit'
-learner_locations = CSV.read('db/learner-locations.csv')
-
-
-LearnerLocation.create!(name:  "Example User",
-             country: "United States",
-             state:              "California",
-             city: "San Francisco")
-
-LearnerLocation.create!(name:  learner_locations[0][0],
-             country: "Hungary")
+users = CSV.read('db/learner-locations.csv')
+users.each_with_index do |user, count|
+	sleep 1 if count % 5 == 0
+	location = Geokit::Geocoders::GoogleGeocoder.geocode user[2]
+	User.create!(first_name:  	user[0],
+			 	 last_name:		user[1],
+             	 country: 		location.country,
+             	 state:         location.state_name,
+             	 city: 			location.city)
+end
