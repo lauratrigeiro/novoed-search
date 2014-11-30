@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+west_coaster:
+  first_name: West
+  last_name: Coaster
+  country: United States
+  state: California
+  city: San Francisco
+
+german_learner:
+  first_name: German
+  last_name: Learner
+  country: Germany
+  state: 
+  city: Frankfurt
+
+american:
+  first_name: John
+  last_name: Doe
+  country: United States
+  state: 
+  city: 
+
