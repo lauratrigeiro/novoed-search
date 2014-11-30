@@ -1,37 +1,40 @@
-<h1>LearnerLocations#search</h1>
-<%= form_tag :search, method: :get, :class => "form-inline" do %>
-	 <div>
-    <label>Search By:</label><br/>
-    <%= radio_button_tag(:search_by, "city", checked: "checked") %>
-    <%= label_tag(:search_by_city, "City") %>
+<div class="centered">
+	<h1>User Search by Location</h1>
+	<%= form_tag :search, method: :get, :class => "form-inline" do %>
+		 <div>
+	    <label>Search By:</label><br/>
+	    <%= radio_button_tag(:search_by, "city", checked: "checked") %>
+	    <%= label_tag(:search_by_city, "City") %>
 
-    <%= radio_button_tag(:search_by, "state") %>
-    <%= label_tag(:search_by_state, "State/Region") %>
+	    <%= radio_button_tag(:search_by, "state") %>
+	    <%= label_tag(:search_by_state, "State/Region") %>
 
-    <%= radio_button_tag(:search_by, "country") %>
-    <%= label_tag(:search_by_country, "Country") %>
-  </div>
-    <%= search_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", name: nil, class: "btn btn-default" %>   
-<% end %>
-<p></p>
-<% if @users && @users.any? %>
-	<%= will_paginate @users %>
-	<table id="user-locations" class="table table-striped table-bordered table-condensed table-responsive">
-		<thead>
-		  <tr>
-		    <th>First Name</th>
-		    <th>Last Name</th>
-		    <th>City</th>
-		    <th>State/Region</th>
-		    <th>Country</th>
-		  </tr>
-		</thead>
-		<tbody>
-			<%= render @users %>
-		</tbody>
-	</table>
-	<%= will_paginate @users %>
-<% elsif @users %>
-	<p>No search results found.</p>
-<% end %>
+	    <%= radio_button_tag(:search_by, "country") %>
+	    <%= label_tag(:search_by_country, "Country") %>
+	  </div>
+	    <%= search_field_tag :query, params[:query] %>
+	    <%= submit_tag "Search", name: nil, class: "btn btn-default" %>   
+	<% end %>
+	<br/>
+	<% if @users && @users.any? %>
+		<p>This search returned <%= @users.count %> results.</p>
+		<%= will_paginate @users %>
+</div>
+		<table id="user-locations" class="table table-striped table-bordered table-condensed table-responsive">
+			<thead>
+			  <tr>
+			    <th>First Name</th>
+			    <th>Last Name</th>
+			    <th>City</th>
+			    <th>State/Region</th>
+			    <th>Country</th>
+			  </tr>
+			</thead>
+			<tbody>
+				<%= render @users %>
+			</tbody>
+		</table>
+	<div class="centered"><%= will_paginate @users %>
+	<% elsif @users %>
+		<p>No search results found.</p></div>
+	<% end %>
