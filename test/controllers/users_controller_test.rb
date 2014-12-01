@@ -5,7 +5,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should get search" do
     get :search
     assert_response :success
-    assert_select "title", "NovoedFinder"
+    assert_select "title", "NovoEd Search"
     assert_select "form", 1
     assert_select "table", false, "A page with no query shows no table"  
   end
